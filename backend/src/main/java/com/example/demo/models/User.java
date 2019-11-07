@@ -50,7 +50,7 @@ public class User {
     @JoinTable(name = "user_roles", // UserクラスとRoleクラスを多対多結合
             joinColumns = @JoinColumn(name = "user_id"), // 結合列にUserオブジェクトのidフィールドを指定
             inverseJoinColumns = @JoinColumn(name = "role_id")) // 結合列にRoleオブジェクトのidフィールドを指定
-    private Set roles = new HashSet<>();
+    private Set<Role> roles = new HashSet<>();
 
     // constructor
     public User(String username, String email, String password) {
