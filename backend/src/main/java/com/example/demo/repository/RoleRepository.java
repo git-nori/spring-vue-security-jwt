@@ -9,6 +9,6 @@ import com.example.demo.models.ERole;
 import com.example.demo.models.Role;
 
 @Repository
-public interface RoleRepository extends JpaRepository {
+public interface RoleRepository extends JpaRepository<Role, Long> {
     Optional<Role> findByName(ERole name);
 }
