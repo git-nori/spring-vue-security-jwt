@@ -50,6 +50,19 @@ const routes = [
   }
 ]
 
+// ルートガードを設定
+router.beforeEach((to, from, next) => {
+  const publicPages = ['/login', 'home']
+  const authRequired = !publicPages.includes(to.path) // 遷移先のパスにpublicPages以外のパスが含まれているか判定
+  const loggedIn = localStorage.getItem('user')
+
+  if (authRequired && !loggedIn) {
+    return next('/login')
+  }
+
+  next()
+})
+
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
